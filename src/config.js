@@ -5,14 +5,22 @@
 import {aircraftManager, DEFAULT_CONFIG} from "./main.js";
 
 // North alignment (user heading) config
-const northAlignmentInput = document.getElementById("north-alignment");
+export const northAlignmentInput = document.getElementById("north-alignment");
+const northAlignmentOutput = document.getElementById("north-alignment-output");
 
 if (localStorage.getItem("north-alignment")) {
     northAlignmentInput.value = localStorage.getItem("north-alignment");
 }
 
-northAlignmentInput.oninput = () => {
+northAlignmentOutput.innerHTML = `${("00" + northAlignmentInput.value).slice(-3)}°`;
+
+export function updateNorthAlignment() {
     localStorage.setItem("north-alignment", northAlignmentInput.value);
+    northAlignmentOutput.innerHTML = `${("00" + northAlignmentInput.value).slice(-3)}°`;
+}
+
+northAlignmentInput.oninput = () => {
+    updateNorthAlignment();
 }
 
 export function getNorthAlignment() {
@@ -68,13 +76,21 @@ export function getScale() {
 
 // FOV config
 const fovInput = document.getElementById("fov");
+const fovOutput = document.getElementById("fov-output");
 
 if (localStorage.getItem("fov")) {
     fovInput.value = localStorage.getItem("fov");
 }
 
-fovInput.oninput = () => {
+fovOutput.innerHTML = `${("00" + fovInput.value).slice(-3)}°`;
+
+function updateFov() {
     localStorage.setItem("fov", fovInput.value);
+    fovOutput.innerHTML = `${("00" + fovInput.value).slice(-3)}°`;
+}
+
+fovInput.oninput = () => {
+    updateFov()
 }
 
 export function getFov() {
@@ -86,11 +102,18 @@ const resetConfig = document.getElementById("reset")
 
 resetConfig.onclick = () => {
     localStorage.clear();
+
     northAlignmentInput.value = DEFAULT_CONFIG.north_alignment;
+    updateNorthAlignment();
+
     invertedInput.value = DEFAULT_CONFIG.inverted;
+
     modelsInput.value = DEFAULT_CONFIG.models;
+
     scaleInput.value = DEFAULT_CONFIG.scale;
+
     fovInput.value = DEFAULT_CONFIG.fov;
+    updateFov();
 }
 
 // config hint

@@ -9,7 +9,7 @@ import * as THREE from 'three';
 
 import {getUserPosition} from "./helpers.js";
 import {AircraftManager} from "./aircraft/aircraftManager.js";
-import {getFov} from "./config.js";
+import {getFov, northAlignmentInput, updateNorthAlignment} from "./config.js";
 
 // constants
 const MIN_ELEVATION = 10; // minimum degree of elevation
@@ -50,11 +50,15 @@ try {
             location.alt = DEFAULT_ALT;
         }
 
-        // get heading if available if not fall back on default
+        // get heading if available, if not fall back on default
         if (position.coords.heading) {
             location.heading = position.coords.heading;
+            northAlignmentInput.value = position.coords.heading;
+            updateNorthAlignment();
         } else {
             location.heading = DEFAULT_HEADING;
+            northAlignmentInput.value = position.coords.heading;
+            updateNorthAlignment();
         }
 
     } else {

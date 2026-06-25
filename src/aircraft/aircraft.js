@@ -244,7 +244,7 @@ export class Aircraft {
         // position object
         const position = this.getPosition();
         const spherical = new THREE.Spherical(
-            Math.max(position.z, 15_000)/scale, // clamp to prevent oversize planes taking whole space
+            Math.max(position.z, 10_000)/scale, // clamp to prevent oversize planes taking whole space
             Math.PI/2 - degToRad(position.x),
             (degToRad(position.y) + northAlignment) * inverted,
         )

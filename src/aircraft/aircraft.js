@@ -125,7 +125,7 @@ export class Aircraft {
         this.text = new Text();
         this.scene.add(this.text);
         this.text.text = this.getLabelText();
-        this.text.fontSize = 0.5;
+        this.text.fontSize = 0.3;
         this.text.material.depthWrite = false;
         this.text.material.transparent = true;
         this.text.anchorY = 'middle';
@@ -263,7 +263,7 @@ export class Aircraft {
         // put text in correct position
         this.text.text = this.getLabelText();
         this.text.position.setFromSpherical(spherical);
-        this.text.position.x += 1.5;
+        this.text.position.x += 1.6;
         this.text.sync();
     }
 }

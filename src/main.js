@@ -30,7 +30,7 @@ export const DEFAULT_CONFIG = {
     inverted: false,
     models: true,
     scale: 1500,
-    fov: 140
+    fov: 120
 }
 
 // get user location or fallback to default

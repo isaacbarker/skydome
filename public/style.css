@@ -24,6 +24,12 @@ html, body {
   background-color: var(--bg);
 }
 
+.canvas__wrapper {
+  background-color: #000;
+  width: 100svw;
+  height: 100svh
+}
+
 .config__hint {
   position: absolute;
   box-sizing: border-box;
@@ -123,12 +129,12 @@ html, body {
 }
 
 .config__input--btn {
-  background-color: var(--highlight);
+  background-color: inherit;
   border: none;
   color: var(--text);
   border-radius: .5rem;
   padding: 0.5em;
-  text-decoration: none;
+  text-decoration: underline;
   cursor: pointer;
 }
 
